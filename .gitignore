@@ -37,3 +37,9 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### yml ###
+application.yml
+
+### q domain ###
+src/main/generated
