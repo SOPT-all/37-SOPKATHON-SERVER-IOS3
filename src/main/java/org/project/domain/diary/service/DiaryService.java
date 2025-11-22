@@ -42,7 +42,7 @@ public class DiaryService {
                 request.subjectType(),
                 request.title(),
                 request.content(),
-                googleApiComponent.classifyTag(request.content()),
+                googleApiComponent.generateTagClassifyByGemini(request.content()),
                 user
         );
 
