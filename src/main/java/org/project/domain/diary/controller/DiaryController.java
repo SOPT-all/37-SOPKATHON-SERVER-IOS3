@@ -2,7 +2,7 @@ package org.project.domain.diary.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.project.domain.diary.dto.PostDiaryRequest;
+import org.project.domain.diary.dto.request.PostDiaryRequest;
 import org.project.domain.diary.service.DiaryService;
 import org.project.global.api.ApiResponse;
 import org.springframework.http.ResponseEntity;

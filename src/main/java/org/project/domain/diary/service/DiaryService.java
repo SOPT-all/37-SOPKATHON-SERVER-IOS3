@@ -1,7 +1,8 @@
 package org.project.domain.diary.service;
 
 import lombok.RequiredArgsConstructor;
-import org.project.domain.diary.dto.PostDiaryRequest;
+import lombok.extern.slf4j.Slf4j;
+import org.project.domain.diary.dto.request.PostDiaryRequest;
 import org.project.domain.user.entity.User;
 import org.project.domain.user.repository.UserRepository;
 import org.project.global.google.GoogleApiComponent;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -40,7 +42,7 @@ public class DiaryService {
                 request.subjectType(),
                 request.title(),
                 request.content(),
-                googleApiComponent.generateTagClassifyByGemini(request.content()),
+                googleApiComponent.classifyTag(request.content()),
                 user
         );
 
@@ -73,5 +75,43 @@ public class DiaryService {
 
         // 2) DiaryListResponse 변환
         return DiaryListResponse.from(diaries);
+    }
+
+    @Transactional
+    public void increaseEmotion(Long diaryId, String emotion) {
+
+        log.info("📌 감정 증가 요청 - diaryId: {}, emotion: {}", diaryId, emotion);
+
+        Diary diary = diaryRepository.findById(diaryId)
+                .orElseThrow(() -> {
+                    log.error("❌ Diary not found - diaryId: {}", diaryId);
+                    return new RuntimeException("Diary not found");
+                });
+
+        // 증가 전 값 로그
+        log.info("🔎 증가 전 값 - heart: {}, good: {}, tear: {}, clap: {}, fire: {}",
+                diary.getHeart(), diary.getGood(), diary.getTear(),
+                diary.getClap(), diary.getFire()
+        );
+
+        switch (emotion) {
+            case "heart" -> diary.increaseHeart();
+            case "good"  -> diary.increaseGood();
+            case "tear"  -> diary.increaseTear();
+            case "clap"  -> diary.increaseClap();
+            case "fire"  -> diary.increaseFire();
+            default -> {
+                log.error("❌ Invalid emotion type: {}", emotion);
+                throw new IllegalArgumentException("Invalid emotion: " + emotion);
+            }
+        }
+
+        // 증가 후 값 로그
+        log.info("✅ 증가 후 값 - heart: {}, good: {}, tear: {}, clap: {}, fire: {}",
+                diary.getHeart(), diary.getGood(), diary.getTear(),
+                diary.getClap(), diary.getFire()
+        );
+
+        log.info("🎉 감정 증가 완료 - diaryId: {}, emotion: {}", diaryId, emotion);
     }
 }

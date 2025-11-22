@@ -1,4 +1,4 @@
-package org.project.domain.diary.dto;
+package org.project.domain.diary.dto.request;
 
 public record PostDiaryRequest(
         Long userId,
