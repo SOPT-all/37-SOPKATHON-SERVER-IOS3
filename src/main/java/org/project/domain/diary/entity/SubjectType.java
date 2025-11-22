@@ -10,9 +10,9 @@ public enum SubjectType {
 
     public static SubjectType of(String type) {
         switch (type) {
-            case "selected":
+            case "SELECT":
                 return SELECT;
-            case "free":
+            case "FREE":
                 return FREE;
         }
         throw new IllegalArgumentException("SubjectType은 selected,free 중 하나입니다.");
