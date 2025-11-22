@@ -6,19 +6,16 @@ import org.project.global.api.ErrorCode;
 import org.project.global.api.GeneralException;
 
 public class PromptUtil {
-    public static String generatePrompt(String endDate, String contestName) {
+    public static String generatePrompt() {
 
         return """
-                오늘의 일기 주제 추천해줘.
+                오늘의 일기 주제 딱 하나만 추천해줘.
 
                 출력 형식(JSON):
                 {
                     "questionList": "오늘의 주제"
                 }
-                """.formatted(
-                endDate,
-                contestName
-        );
+                """;
     }
 
     public static String extractJson(String response) {
