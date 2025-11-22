@@ -1,7 +1,5 @@
 package org.project.domain.diary.entity;
 
-import org.springframework.web.bind.MethodArgumentNotValidException;
-
 public enum SubjectType {
     SELECT("selected"), FREE("free");
 
