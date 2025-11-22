@@ -39,6 +39,11 @@ jobs:
           name: gmjd-jar
           path: build/libs/37-SOPKATHON-SERVER-IOS3-1.0-SNAPSHOT.jar
 
+      - name: Show build/libs
+        run: |
+          echo "===== build/libs contents ====="
+          ls -al build/libs
+
   upload:
     needs: build
     runs-on: ubuntu-latest
