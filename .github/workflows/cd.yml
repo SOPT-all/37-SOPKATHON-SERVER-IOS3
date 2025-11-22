@@ -57,7 +57,7 @@ jobs:
 
       - name: Ensure JAR exists
         run: |
-          if [ ! -f build/libs/GMJD-SERVER-1.0-SNAPSHOT.jar ]; then
+          if [ ! -f build/libs/37-SOPKATHON-SERVER-IOS3-1.0-SNAPSHOT.jar ]; then
             echo "❌ JAR 파일이 존재하지 않습니다."
             exit 1
           else
