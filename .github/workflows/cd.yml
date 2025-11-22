@@ -90,5 +90,5 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           script: |
             cd ${{ secrets.APP_DIR }}
-            mv SOPKATHON-SERVER-IOS3-1.0-SNAPSHOT.jar spring-boot-application.jar
+            mv *.jar spring-boot-application.jar
             ./run.sh
