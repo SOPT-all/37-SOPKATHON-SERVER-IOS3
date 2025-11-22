@@ -60,7 +60,16 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
     // Redis
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+//    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    // google NLP
+    implementation 'com.google.cloud:google-cloud-language:2.64.0'
+
+    // google Translate
+    implementation 'com.google.cloud:libraries-bom:20.9.0'
+    implementation 'com.google.cloud:google-cloud-translate:2.33.0'
+
+
 }
 
 def querydslDir = "src/main/generated/querydsl"

@@ -2,6 +2,8 @@ package org.project.domain.diary.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.project.domain.diary.dto.PostDiaryRequest;
+import org.project.global.google.GoogleApiComponent;
 import org.project.domain.diary.dto.reponse.DiaryListResponse;
 import org.project.domain.diary.dto.reponse.RandomDiaryResponse;
 import org.project.domain.diary.entity.Diary;
@@ -24,6 +26,20 @@ public class DiaryService {
     private final Random random = new Random();
 
     private final DiaryRepository diaryRepository;
+    private final GoogleApiComponent googleApiComponent;
+
+    public void postDiary(PostDiaryRequest request) {
+
+        Diary diary = new Diary(
+                request.subject(),
+                request.subjectType(),
+                request.title(),
+                request.content(),
+                googleApiComponent.classifyTag(request.content())
+        );
+
+        diaryRepository.save(diary);
+    }
 
     public RandomDiaryResponse getRandomDiary() {
 
