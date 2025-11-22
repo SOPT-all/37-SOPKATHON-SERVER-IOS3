@@ -75,7 +75,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
-          source: build/libs/37-SOPKATHON-SERVER-IOS3-1.0-SNAPSHOT.jar
+          source: build/libs/SOPKATHON-SERVER-IOS3-1.0-SNAPSHOT.jar
           target: ${{ secrets.APP_DIR }}
 
   deploy:
