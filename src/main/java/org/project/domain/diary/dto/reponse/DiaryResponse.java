@@ -12,11 +12,11 @@ public record DiaryResponse(
         String content,
         String createdAt,
         List<String> tags,
-        int one,
-        int two,
-        int three,
-        int four,
-        int five
+        int heart,
+        int good,
+        int tear,
+        int clap,
+        int fire
 ) {
 
     public static DiaryResponse from(Diary diary) {
@@ -36,11 +36,11 @@ public record DiaryResponse(
                 diary.getContent(),
                 createdAtFormatted,
                 tags,
-                diary.getOne(),
-                diary.getTwo(),
-                diary.getThree(),
-                diary.getFour(),
-                diary.getFive()
+                diary.getHeart(),
+                diary.getGood(),
+                diary.getTear(),
+                diary.getClap(),
+                diary.getFire()
         );
     }
 }

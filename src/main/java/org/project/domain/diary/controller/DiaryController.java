@@ -3,13 +3,13 @@ package org.project.domain.diary.controller;
 import lombok.RequiredArgsConstructor;
 import org.project.domain.diary.dto.reponse.DiaryListResponse;
 import org.project.domain.diary.dto.reponse.RandomDiaryResponse;
+import org.project.domain.diary.dto.request.EmotionRequest;
 import org.project.domain.diary.service.DiaryService;
 import org.project.global.api.ApiResponse;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,5 +30,16 @@ public class DiaryController {
         DiaryListResponse response = diaryService.getDiaryList(userId);
 
         return ResponseEntity.ok(ApiResponse.ok(response));
+    }
+
+    @PostMapping("/{diaryId}/emotion")
+    public ResponseEntity<ApiResponse<Void>> increaseEmotion(
+            @PathVariable Long diaryId,
+            @RequestBody EmotionRequest request
+    ) {
+
+        diaryService.increaseEmotion(diaryId, request.emotion());
+
+        return ResponseEntity.ok(ApiResponse.ok(null));
     }
 }
