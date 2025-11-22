@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: gmjd-jar
-          path: build/libs/37-SOPKATHON-SERVER-IOS3-1.0-SNAPSHOT.jar
+          path: build/libs/SOPKATHON-SERVER-IOS3-1.0-SNAPSHOT.jar
 
       - name: Show build/libs
         run: |
@@ -62,7 +62,7 @@ jobs:
 
       - name: Ensure JAR exists
         run: |
-          if [ ! -f build/libs/37-SOPKATHON-SERVER-IOS3-1.0-SNAPSHOT.jar ]; then
+          if [ ! -f build/libs/SOPKATHON-SERVER-IOS3-1.0-SNAPSHOT.jar ]; then
             echo "❌ JAR 파일이 존재하지 않습니다."
             exit 1
           else
@@ -90,5 +90,5 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           script: |
             cd ${{ secrets.APP_DIR }}
-            mv *.jar spring-boot-application.jar
+            mv SOPKATHON-SERVER-IOS3-1.0-SNAPSHOT.jar spring-boot-application.jar
             ./run.sh
