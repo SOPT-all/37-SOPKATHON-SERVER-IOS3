@@ -71,12 +71,14 @@ public class Diary extends BaseEntity {
             String subjectType,
             String title,
             String content,
-            String tagList
+            String tagList,
+            User user
     ) {
         this.subject = subject;
         this.subjectType = SubjectType.of(subjectType);
         this.title = title;
         this.content = content;
         this.tagList = tagList;
+        this.user = user;
     }
 }

@@ -21,7 +21,10 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping(value = "/{userId}")  // 유저의 이름, 사용가능한 크레딧 개수 조회
-    @Operation(summary = "마이페이지 기본 정보 제공 API")
+    @Operation(
+            summary = "일기 생성 완료된 후 이름 조회",
+            description = "일기 생성 완료 후 이름을 조회합니다."
+    )
     public ResponseEntity<ApiResponse<?>> getUserInfo(@PathVariable Long userId) {
 
         UserResponse response = userService.getUserInfo(userId);
