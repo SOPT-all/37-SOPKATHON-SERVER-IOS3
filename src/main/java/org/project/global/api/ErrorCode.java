@@ -47,7 +47,8 @@ public enum ErrorCode {
      */
     // DB 제약조건 위반 에러
     DB_CONSTRAINT_VIOLATION(HttpStatus.INTERNAL_SERVER_ERROR, 50000, "DB 제약조건 문제 발생, 서버 개발자에게 문의해주세요"),
-    FAIL_RANDOM_DIARY(HttpStatus.INTERNAL_SERVER_ERROR, 50001, "랜덤 일기 조회 실패"),;
+    FAIL_RANDOM_DIARY(HttpStatus.INTERNAL_SERVER_ERROR, 50001, "랜덤 일기 조회 실패"),
+    GPT_RESPONSE_PARSE_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, 50002, "AI 응답 파싱 에러");
 
 
     private final HttpStatus status;

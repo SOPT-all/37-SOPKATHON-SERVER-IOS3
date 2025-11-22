@@ -36,15 +36,35 @@ public class Diary extends BaseEntity {
     @Column(nullable = true)
     private String tagList;
 
-    private int one = 0;
-    private int two = 0;
-    private int three = 0;
-    private int four = 0;
-    private int five = 0;
+    private int heart;
+    private int good;
+    private int tear;
+    private int clap;
+    private int fire;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    public void increaseHeart() {
+        this.heart++;
+    }
+
+    public void increaseGood() {
+        this.good++;
+    }
+
+    public void increaseTear() {
+        this.tear++;
+    }
+
+    public void increaseClap() {
+        this.clap++;
+    }
+
+    public void increaseFire() {
+        this.fire++;
+    }
 
     public Diary(
             String subject,
