@@ -39,7 +39,7 @@ bin/
 .DS_Store
 
 ### yml ###
-application.yml
+application-dev.yml
 
 ### q domain ###
 src/main/generated
