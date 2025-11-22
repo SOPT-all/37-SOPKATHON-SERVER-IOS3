@@ -19,6 +19,7 @@ public class Diary {
     Long id;
     private String subject;
     private SubjectType subjectType;
+    private String title;
     private String content;
     private String tagList;
 
@@ -31,11 +32,13 @@ public class Diary {
     public Diary(
             String subject,
             String subjectType,
+            String title,
             String content,
             String tagList
     ) {
         this.subject = subject;
         this.subjectType = SubjectType.of(subjectType);
+        this.title = title;
         this.content = content;
         this.tagList = tagList;
     }
