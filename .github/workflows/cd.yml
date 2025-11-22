@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: gmjd-jar
-          path: build/libs/GMJD-SERVER-1.0-SNAPSHOT.jar
+          path: build/libs/37-SOPKATHON-SERVER-IOS3-1.0-SNAPSHOT.jar
 
   upload:
     needs: build
