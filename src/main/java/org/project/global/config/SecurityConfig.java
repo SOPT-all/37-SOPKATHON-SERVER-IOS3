@@ -48,7 +48,7 @@ public class SecurityConfig {
 
         config.setAllowedOrigins(Arrays.asList(
                 "http://localhost:3000", // 웹 로컬
-                "https://dev.projectname.com"
+                "http://13.209.148.138:8080"
         ));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         config.setAllowedHeaders(Collections.singletonList("*"));
