@@ -2,7 +2,9 @@ package org.project.domain.diary.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.project.domain.diary.dto.PostDiaryRequest;
+import org.project.domain.diary.dto.request.PostDiaryRequest;
+import org.project.domain.user.entity.User;
+import org.project.domain.user.repository.UserRepository;
 import org.project.global.google.GoogleApiComponent;
 import org.project.domain.diary.dto.reponse.DiaryListResponse;
 import org.project.domain.diary.dto.reponse.RandomDiaryResponse;
@@ -27,15 +29,21 @@ public class DiaryService {
 
     private final DiaryRepository diaryRepository;
     private final GoogleApiComponent googleApiComponent;
+    private final UserRepository userRepository;
 
+    @Transactional(readOnly = false)
     public void postDiary(PostDiaryRequest request) {
+
+        User user = userRepository.findById(request.userId())
+                .orElseThrow(() -> new GeneralException(ErrorCode.NOT_FOUND_USER));
 
         Diary diary = new Diary(
                 request.subject(),
                 request.subjectType(),
                 request.title(),
                 request.content(),
-                googleApiComponent.classifyTag(request.content())
+                googleApiComponent.classifyTag(request.content()),
+                user
         );
 
         diaryRepository.save(diary);
