@@ -1,6 +1,15 @@
 package org.project.domain.diary.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.project.domain.diary.dto.reponse.DiaryListResponse;
+import org.project.domain.diary.dto.reponse.RandomDiaryResponse;
+import org.project.domain.diary.dto.request.EmotionRequest;
+import org.project.domain.diary.service.DiaryService;
+import org.project.global.api.ApiResponse;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.project.domain.diary.dto.PostDiaryRequest;
 import org.project.domain.diary.service.DiaryService;
@@ -44,5 +53,16 @@ public class DiaryController {
         DiaryListResponse response = diaryService.getDiaryList(userId);
 
         return ResponseEntity.ok(ApiResponse.ok(response));
+    }
+
+    @PostMapping("/{diaryId}/emotion")
+    public ResponseEntity<ApiResponse<Void>> increaseEmotion(
+            @PathVariable Long diaryId,
+            @RequestBody EmotionRequest request
+    ) {
+
+        diaryService.increaseEmotion(diaryId, request.emotion());
+
+        return ResponseEntity.ok(ApiResponse.ok(null));
     }
 }
