@@ -1,0 +1,34 @@
+package org.project.domain.diary.controller;
+
+import lombok.RequiredArgsConstructor;
+import org.project.domain.diary.dto.reponse.DiaryListResponse;
+import org.project.domain.diary.dto.reponse.RandomDiaryResponse;
+import org.project.domain.diary.service.DiaryService;
+import org.project.global.api.ApiResponse;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/v1/diarys")
+public class DiaryController {
+
+    private final DiaryService diaryService;
+
+    @GetMapping("/random")
+    public ResponseEntity<ApiResponse<RandomDiaryResponse>> getRandomDiary() {
+        RandomDiaryResponse response = diaryService.getRandomDiary();
+        return ResponseEntity.ok(ApiResponse.ok(response));
+    }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<ApiResponse<DiaryListResponse>> getDiaryList(@PathVariable Long userId) {
+
+        DiaryListResponse response = diaryService.getDiaryList(userId);
+
+        return ResponseEntity.ok(ApiResponse.ok(response));
+    }
+}

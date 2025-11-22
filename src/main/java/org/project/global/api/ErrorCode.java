@@ -29,6 +29,7 @@ public enum ErrorCode {
      * 404 NOT_FOUND
      */
     NOT_FOUND_URL(HttpStatus.NOT_FOUND, 40400, "지원하지 않는 URL입니다."),
+    NOT_FOUND_USER(HttpStatus.NOT_FOUND, 40401, "존재하지 않는 유저입니다."),
 
 
     /**
@@ -45,7 +46,8 @@ public enum ErrorCode {
      * 500 INTERNAL_SERVER_ERROR
      */
     // DB 제약조건 위반 에러
-    DB_CONSTRAINT_VIOLATION(HttpStatus.INTERNAL_SERVER_ERROR, 50000, "DB 제약조건 문제 발생, 서버 개발자에게 문의해주세요"),;
+    DB_CONSTRAINT_VIOLATION(HttpStatus.INTERNAL_SERVER_ERROR, 50000, "DB 제약조건 문제 발생, 서버 개발자에게 문의해주세요"),
+    FAIL_RANDOM_DIARY(HttpStatus.INTERNAL_SERVER_ERROR, 50001, "랜덤 일기 조회 실패"),;
 
 
     private final HttpStatus status;
