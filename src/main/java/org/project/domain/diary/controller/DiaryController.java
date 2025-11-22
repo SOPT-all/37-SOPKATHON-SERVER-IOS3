@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/diarys")
 @RequiredArgsConstructor
@@ -27,6 +28,8 @@ public class DiaryController {
     public ResponseEntity<ApiResponse<?>> postDiary(
             @RequestBody PostDiaryRequest request
     ) {
+
+        log.info(request.toString());
         diaryService.postDiary(request);
         return ResponseEntity.ok().body(
                 ApiResponse.created(null)
