@@ -2,6 +2,8 @@ package org.project.domain.diary.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.project.domain.diary.dto.request.PostDiaryRequest;
 import org.project.domain.diary.dto.reponse.DiaryListResponse;
 import org.project.domain.diary.dto.reponse.RandomDiaryResponse;
 import org.project.domain.diary.dto.request.EmotionRequest;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/diarys")
 @RequiredArgsConstructor
@@ -31,6 +34,8 @@ public class DiaryController {
     public ResponseEntity<ApiResponse<?>> postDiary(
             @RequestBody PostDiaryRequest request
     ) {
+
+        log.info(request.toString());
         diaryService.postDiary(request);
         return ResponseEntity.ok().body(
                 ApiResponse.created(null)
