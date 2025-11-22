@@ -24,3 +24,7 @@ spring:
   web:
     resources:
       add-mappings: false
+
+openai:
+  secret-key: ${OPENAI_API_KEY}
+  model: "gpt-5-nano"
