@@ -14,6 +14,10 @@
 <td><p align="center" dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://github.com/kbt82883.png"><img src="https://github.com/kbt82883.png" width="260" style="max-width: 100%;"></a></p></td>
 <td><p align="center" dir="auto"> <a target="_blank" rel="noopener noreferrer" href="https://github.com/JJhwan7099.png"><img src="https://github.com/JJhwan7099.png" width="260" style="max-width: 100%;"></a></p></td>
 </tr>
+<tr>
+<td><p align="center" dir="auto">BACKEND & INFRA</p></td>
+<td><p align="center" dir="auto">BACKEND</p></td>
+</tr>
 </tbody>
 </table></markdown-accessiblity-table>
 <br>
